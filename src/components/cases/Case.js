@@ -9,14 +9,15 @@ export default class Case extends Component {
   }
 
   handleUpload = () => {
-    const { uid } = this.props;
-    const caseId = getCaseId();
-    const { file } = this.state;
-    uploadCaseFile(uid, caseId, file).then(() => {
-      console.log('File uploaded successfully')
-    }).catch((error) => {
-      console.log(error);
-    })
+    if(this.state.file) {
+      const { uid } = this.props;
+      const caseId = getCaseId();
+      uploadCaseFile(uid, caseId, this.state.file).then(() => {
+        this.setState({ file: null });
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
   }
 
   render() {
