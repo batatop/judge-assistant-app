@@ -1,5 +1,5 @@
 import { url } from "../../constants";
-import { db } from "../../firebase";
+import { db, storage } from "../../firebase";
 
 export function addCase(uid, name) {
     return new Promise((resolve, reject) => {
@@ -27,6 +27,18 @@ export function deleteCase(uid, caseId) {
             } else {
                 resolve();
             }
+        })
+    })
+}
+
+export function uploadCaseFile(uid, caseId, file) {
+    return new Promise((resolve, reject) => {
+        const storageRef = storage.ref();
+        const caseRef = storageRef.child(`${uid}/${caseId}/${file.name}`);
+        caseRef.put(file).then((snapshot) => {
+            resolve(snapshot);
+        }).catch((error) => {
+            reject(error);
         })
     })
 }
