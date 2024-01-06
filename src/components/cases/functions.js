@@ -43,10 +43,29 @@ export function uploadCaseFile(uid, caseId, file) {
                 reject(error);
             } else {
                 const storageRef = storage.ref();
-                const caseRef = storageRef.child(`${uid}/${caseId}/${file.name}`);
+                const caseRef = storageRef.child(`${uid}/${caseId}/${newFileRef.key}`);
                 caseRef.put(file).then((snapshot) => {
                     // update firebase database
                     resolve(snapshot);
+                }).catch((error) => {
+                    reject(error);
+                })
+            }
+        })
+    })
+}
+
+export function deleteFile(uid, caseId, fileId) {
+    return new Promise((resolve, reject) => {
+        const caseDbRef = db.ref(`${url}/cases/${uid}/${caseId}/files/${fileId}`);
+        caseDbRef.remove((error) => {
+            if (error) {
+                reject(error);
+            } else {
+                const storageRef = storage.ref();
+                const caseRef = storageRef.child(`${uid}/${caseId}/${fileId}`);
+                caseRef.delete().then(() => {
+                    resolve();
                 }).catch((error) => {
                     reject(error);
                 })

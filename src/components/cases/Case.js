@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { uploadCaseFile } from './functions';
 import { db } from '../../firebase';
 import { url } from '../../constants';
+import CaseFileItem from './CaseFileItem';
 
 export default class Case extends Component {
   constructor(props) {
@@ -16,12 +17,12 @@ export default class Case extends Component {
     const caseId = getCaseId();
     const caseRef = db.ref(`${url}/cases/${this.props.uid}/${caseId}`);
     caseRef.on("value", (snapshot) => {
-        const data = snapshot.val() || {};
-        this.setState({ case: data });
+      const data = snapshot.val() || {};
+      this.setState({ case: data });
     }, (error) => {
-        console.log(error)
+      console.log(error)
     })
-}
+  }
 
   handleFileChange = (e) => {
     if (e.target.files[0]) {
@@ -30,7 +31,7 @@ export default class Case extends Component {
   }
 
   handleUpload = () => {
-    if(this.state.file) {
+    if (this.state.file) {
       const { uid } = this.props;
       const caseId = getCaseId();
       uploadCaseFile(uid, caseId, this.state.file).then(() => {
@@ -51,7 +52,7 @@ export default class Case extends Component {
 
     return Object.keys(this.state.case.files || {}).map((fileId) => {
       return (
-        <div key={fileId}>{this.state.case.files[fileId].name}</div>
+        <CaseFileItem key={fileId} fileId={fileId} caseId={getCaseId()} uid={this.props.uid} fileName={this.state.case.files[fileId].name} />
       )
     })
   }
