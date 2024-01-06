@@ -1,0 +1,23 @@
+.addCaseContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.caseListItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid grey;
+}
+
+.caseDeleteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  border: 1px solid red;
+  cursor: pointer;
+}
