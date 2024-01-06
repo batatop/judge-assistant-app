@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { uploadCaseFile } from './functions';
+import { sendMessage, uploadCaseFile } from './functions';
 import { db } from '../../firebase';
 import { url } from '../../constants';
 import CaseFileItem from './CaseFileItem';
@@ -9,7 +9,8 @@ export default class Case extends Component {
     super(props);
     this.state = {
       file: null,
-      case: {}
+      case: {},
+      chatMessage: ''
     }
   }
 
@@ -44,7 +45,7 @@ export default class Case extends Component {
   }
 
   listCaseFiles = () => {
-    if (this.state.case?.files && Object.keys(this.state.case.files).length === 0) {
+    if (!this.state.case?.files || (this.state.case?.files && Object.keys(this.state.case.files).length === 0)) {
       return (
         <div>No case files</div>
       )
@@ -57,15 +58,57 @@ export default class Case extends Component {
     })
   }
 
+  getChatMessages = () => {
+    if (!this.state.case?.chat || (this.state.case?.chat && Object.keys(this.state.case.chat).length === 0)) {
+      return (
+        <div>No chat messages</div>
+      )
+    }
+
+    return Object.keys(this.state.case.chat).map((messageId) => {
+      return (
+        <div key={messageId}>{this.state.case.chat[messageId].message}</div>
+      )
+    })
+  }
+
+  handleChatMessageChange = (e) => {
+    console.log(e.target.value);
+    this.setState({ chatMessage: e.target.value });
+  } 
+
+  sendMessage = () => {
+    if (this.state.chatMessage) {
+      sendMessage(this.props.uid, getCaseId(), this.state.chatMessage).then(() => {
+        console.log('message sent');
+        this.setState({ chatMessage: '' });
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
+  }
+
   render() {
     return (
       <div>
+        {/* upload button */}
         <div>
           <input type="file" onChange={this.handleFileChange} />
           <button onClick={this.handleUpload}>Upload</button>
         </div>
+
+        {/* list cases */}
         <div>
           {this.listCaseFiles()}
+        </div>
+
+        {/* chat */}
+        <div>
+          <div>{this.getChatMessages()}</div>
+          <div>
+            <input type="text" onChange={this.handleChatMessageChange} value={this.state.chatMessage} />
+            <div onClick={this.sendMessage}>Send</div>
+          </div>
         </div>
       </div>
     )

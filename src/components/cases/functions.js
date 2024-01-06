@@ -1,5 +1,6 @@
 import { url } from "../../constants";
 import { db, storage } from "../../firebase";
+import firebase from 'firebase/compat/app';
 
 export function addCase(uid, name) {
     return new Promise((resolve, reject) => {
@@ -69,6 +70,23 @@ export function deleteFile(uid, caseId, fileId) {
                 }).catch((error) => {
                     reject(error);
                 })
+            }
+        })
+    })
+}
+
+export function sendMessage(uid, caseId, message) {
+    return new Promise((resolve, reject) => {
+        const caseDbRef = db.ref(`${url}/cases/${uid}/${caseId}/chat`);
+        const newMessageRef = caseDbRef.push();
+        newMessageRef.set({
+            message,
+            timestamp: firebase.database.ServerValue.TIMESTAMP,
+        }, (error) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve();
             }
         })
     })
