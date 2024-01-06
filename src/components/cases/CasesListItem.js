@@ -1,21 +1,32 @@
-import React, { Component } from 'react'
-import { deleteCase } from './functions'
+import React, { Component } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { deleteCase } from './functions';
+import { routes } from '../../routes';
 
-export default class CasesListItem extends Component {
-    deleteCase = () => {
-        deleteCase(this.props.uid, this.props.caseId)
+class CasesListItem extends Component {
+    deleteCaseItem = () => {
+        deleteCase(this.props.uid, this.props.caseId);
     }
 
     openCase = () => {
-        console.log('open case')
+        this.props.navigate(`${routes.case.replace(':id', this.props.caseId)}`);
     }
 
     render() {
         return (
             <div className='caseListItem' onClick={this.openCase}>
                 <div>{this.props.caseName}</div>
-                <div className='caseDeleteButton' onClick={this.deleteCase}>Delete</div>
+                <div className='caseDeleteButton' onClick={this.deleteCaseItem}>Delete</div>
             </div>
-        )
+        );
     }
 }
+
+function CasesListItemWithRouter(props) {
+    const navigate = useNavigate();
+    const params = useParams();
+
+    return <CasesListItem {...props} navigate={navigate} params={params} />;
+}
+
+export default CasesListItemWithRouter;
