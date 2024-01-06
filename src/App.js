@@ -11,7 +11,7 @@ import { auth } from './firebase'; // assuming you have a firebase.js file
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from "./components/navbar/Navbar";
 import Cases from "./components/cases/Cases";
-import Case from "./components/case/Case";
+import Case from "./components/cases/Case";
 
 class App extends Component {
   constructor(props) {
