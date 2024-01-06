@@ -1,52 +1,52 @@
-import React from "react";
+import React, { Component } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Navigate
 } from "react-router-dom";
+import { routes } from "./routes";
+import Login from "./components/auth/Login";
+import Case from "./components/case/Case"; // assuming you have a Case component
+import { auth } from './firebase'; // assuming you have a firebase.js file
+import { onAuthStateChanged } from 'firebase/auth';
+import Navbar from "./components/navbar/Navbar";
 
-// Example pages
-function Home() {
-  return <h2>Home Page</h2>;
-}
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: null
+    };
+  }
 
-function About() {
-  return <h2>About Page</h2>;
-}
+  componentDidMount() {
+    this.unsubscribe = onAuthStateChanged(auth, (user) => {
+      this.setState({ user: user });
+    });
+  }
 
-function Users() {
-  return <h2>Users Page</h2>;
-}
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Routes> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-        <Routes>
-          <Route path="/about" element={<About />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+  render() {
+    return (
+      <Router>
+        <div>
+          {this.state.user && <Navbar />}
+          <Routes>
+            {this.state.user ? (
+              <Route path={routes.case} element={<Case />} />
+            ) : (
+              <Route path={routes.login} element={<Login />} />
+            )}
+            <Route path="*" element={<Navigate to={this.state.user ? routes.case : routes.login} />} />
+          </Routes>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
