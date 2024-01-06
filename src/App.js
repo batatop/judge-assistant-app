@@ -7,22 +7,22 @@ import {
 } from "react-router-dom";
 import { routes } from "./routes";
 import Login from "./components/auth/Login";
-import Case from "./components/case/Case"; // assuming you have a Case component
 import { auth } from './firebase'; // assuming you have a firebase.js file
 import { onAuthStateChanged } from 'firebase/auth';
 import Navbar from "./components/navbar/Navbar";
+import Cases from "./components/cases/Cases";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: null
+      uid: null
     };
   }
 
   componentDidMount() {
     this.unsubscribe = onAuthStateChanged(auth, (user) => {
-      this.setState({ user: user });
+      this.setState({ uid: user?.uid });
     });
   }
 
@@ -34,14 +34,14 @@ class App extends Component {
     return (
       <Router>
         <div>
-          {this.state.user && <Navbar />}
+          {this.state.uid && <Navbar />}
           <Routes>
-            {this.state.user ? (
-              <Route path={routes.case} element={<Case />} />
+            {this.state.uid ? (
+              <Route path={routes.cases} element={<Cases uid={this.state.uid} />} />
             ) : (
               <Route path={routes.login} element={<Login />} />
             )}
-            <Route path="*" element={<Navigate to={this.state.user ? routes.case : routes.login} />} />
+            <Route path="*" element={<Navigate to={this.state.uid ? routes.cases : routes.login} />} />
           </Routes>
         </div>
       </Router>
