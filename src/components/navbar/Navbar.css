@@ -19,3 +19,8 @@
     outline: none;
     cursor: pointer;
 }
+ .textStyle {
+     color: var(--primary-color);
+     font-weight: bold;
+     font-family: "Oswald", sans-serif;
+ }

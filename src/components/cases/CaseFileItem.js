@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { deleteFile } from './functions';
-
+import './Cases.css'
 class CaseFileItem extends Component {
     deleteFileItem = () => {
         deleteFile(this.props.uid, this.props.caseId, this.props.fileId).then(() => {
@@ -12,14 +12,14 @@ class CaseFileItem extends Component {
 
     render() {
         return (
-            <div className='caseListItemContainer'>
+            
                 <div className='caseListItem'>
                     <div>{this.props.fileName}</div>
                     <div className='caseDeleteButton' onClick={this.deleteFileItem}>
                         Delete
                     </div>
                 </div>
-            </div>
+            
         );
     }
 

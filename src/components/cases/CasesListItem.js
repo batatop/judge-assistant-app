@@ -14,10 +14,11 @@ class CasesListItem extends Component {
 
     render() {
         return (
-            <div className='caseListItem' onClick={this.openCase}>
+            <div className = "caseListItemContainer"><div className='caseListItem' onClick={this.openCase}>
                 <div>{this.props.caseName}</div>
-                <div className='caseDeleteButton' onClick={this.deleteCaseItem}>Delete</div>
-            </div>
+                <div className='caseDeleteButton' onClick={this.deleteCaseItem}>X</div>
+            </div></div>
+            
         );
     }
 }

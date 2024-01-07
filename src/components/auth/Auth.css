@@ -4,6 +4,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url(/Users/efetiras/Documents/Github/judge-assistant-app/public/justice.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
 }
 
 .authInnerContainer {
@@ -21,4 +25,5 @@
     font-weight: bold;
     color: var(--primary-color);
     margin-bottom: 10px;
+    font-family: 'Oswald', sans-serif;
 }

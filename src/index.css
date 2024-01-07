@@ -29,8 +29,10 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family:
+      /*source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
+                    monospace;*/
+      'Oswald', sans-serif;
 }
 
 .appButton {
@@ -46,6 +48,7 @@ code {
   font-weight: bold;
   cursor: pointer;
   margin: var(--margin);
+  font-family: "Oswald", sans-serif;
 }
 .appButton:hover {
   background-color: var(--primary-color-hover);
@@ -60,4 +63,17 @@ code {
 }
 .appInput:hover {
   background-color: var(--secondary-color-hover);
+}
+.addNewCase {
+  font-family: 'Oswald',
+    sans-serif;
+  color: var(--primary-color);
+}
+
+
+
+.fileUpload {
+  font-family: 'Oswald',
+    sans-serif;
+  color: var(--primary-color);
 }

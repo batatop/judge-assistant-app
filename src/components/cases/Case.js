@@ -77,7 +77,7 @@ export default class Case extends Component {
   handleChatMessageChange = (e) => {
     console.log(e.target.value);
     this.setState({ chatMessage: e.target.value });
-  } 
+  }
 
   sendMessage = () => {
     if (this.state.chatMessage) {
@@ -94,22 +94,38 @@ export default class Case extends Component {
     return (
       <div>
         {/* upload button */}
-        <div>
+        <div className="fileUploadContainer">
+          <div className="fileUpload">Upload Case File</div>
           <input type="file" onChange={this.handleFileChange} />
-          <AppButton value='Upload' onClick={this.handleUpload} />
-        </div>
+          <AppButton value='Upload' onClick={this.handleUpload} /><div>
+
+          </div></div>
+
 
         {/* list cases */}
         <div>
-          {this.listCaseFiles()}
+          <div className="casesContainer">
+            <div className="casesHeader">Case Files</div>
+            <div className="casesHeader">Date</div>
+            <div className="casesHeader">Delete File</div>
+            
+          </div>
+          <div className = "caseInfoContainer">
+            {this.listCaseFiles()}</div>
+         
+
         </div>
+
+
 
         {/* chat */}
         <div>
-          <div>{this.getChatMessages()}</div>
-          <div>
-            <input type="text" onChange={this.handleChatMessageChange} value={this.state.chatMessage} />
-            <div onClick={this.sendMessage}>Send</div>
+          <div className="chatContainer"><div className="chatHeader">Chat</div></div>
+          <div className = "chatInfoContainer"><div>{this.getChatMessages()}</div></div>
+          
+          <div className ="sendContainer">
+            <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />
+            <div className = "appButton" onClick={this.sendMessage}>Send</div>
           </div>
         </div>
       </div>

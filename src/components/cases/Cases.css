@@ -2,11 +2,32 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-between;
+    border: 2px solid var(--primary-color);
+    margin: 0 auto;
+    width: 700px;
+    margin-top: 30px;
+    padding: 7px;
+  }
+  
+  .casesContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid var(--primary-color);
+  
+  
+    margin: 0 auto;
+    width: 700px;
+  
+    padding: 7px;
 }
 .caseListItemContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .caseListItem {
@@ -15,7 +36,11 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid grey;
-  max-width: 80%;
+    min-width: 700px;
+      border: 1px solid var(--primary-color);
+      font-family: "Oswald", sans-serif;
+      padding: 7px;
+      color: var(--secondary-color);
 }
   
 
@@ -24,7 +49,82 @@
   justify-content: center;
   align-items: center;
   width: 100px;
-  height: 30px;
-  border: 1px solid red;
+  height: 20px;
   cursor: pointer;
+}
+.fileUploadContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--primary-color);
+  margin: 0 auto;
+  width: 700px;
+  margin-top: 30px;
+  padding: 7px;
+}
+
+.casesHeader {
+  font-family: 'Oswald',
+    sans-serif;
+  color: var(--primary-color);
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--primary-color);
+
+
+  margin: 0 auto;
+  width: 700px;
+
+  padding: 7px;
+}
+
+.chatHeader {
+  display: flex;
+  font-family: 'Oswald',
+    sans-serif;
+  color: var(--primary-color);
+  justify-content: center;
+}
+
+.chatInfoContainer {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+  border: 2px solid var(--primary-color);
+  margin: 0 auto;
+  width: 700px;
+  min-height: 500px;
+  padding: 7px;
+  font-family: "Oswald", sans-serif;
+}
+
+.sendContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--primary-color);
+  margin: 0 auto;
+  width: 700px;
+
+  padding: 7px;
+}
+
+.caseInfoContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid var(--primary-color);
+  margin: 0 auto;
+  width: 700px;
+  font-family: "Oswald", sans-serif;
+  padding: 7px;
 }

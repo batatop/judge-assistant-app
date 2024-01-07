@@ -15,9 +15,9 @@ export default class Navbar extends Component {
   render() {
     return (
       <div className='navbarContainer'>
-        <div>JAI</div>
+        <div className='appAuthTitle'>JAI</div>
         <div>
-          <div className='navbarButton' onClick={this.logout}>Logout</div>
+          <div className='navbarButton' onClick={this.logout}><div className = "textStyle">Logout</div></div>
         </div>
       </div>
     )
