@@ -16,7 +16,7 @@ class CaseFileItem extends Component {
                 <div className='caseListItem'>
                     <div>{this.props.fileName}</div>
                     <div className='caseDeleteButton' onClick={this.deleteFileItem}>
-                        Delete
+                        X
                     </div>
                 </div>
             

@@ -104,13 +104,13 @@ export default class Case extends Component {
 
         {/* list cases */}
         <div>
-          <div className="casesContainer">
+          <div className="casesContainer" >
             <div className="casesHeader">Case Files</div>
             <div className="casesHeader">Date</div>
             <div className="casesHeader">Delete File</div>
             
           </div>
-          <div className = "caseInfoContainer">
+          <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
             {this.listCaseFiles()}</div>
          
 
