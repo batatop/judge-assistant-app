@@ -7,6 +7,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root {
+  --primary-color: #6506FF;
+  --primary-color-hover: #4D00E3;
+  --primary-color-active: #3A00C8;
+  --secondary-color: #CBACFF ;
+  --secondary-color-hover: #B38AFF;
+  --secondary-color-active: #9C6EFF;
+  --primary-text-color: #000000;
+  --secondary-text-color: #FFFFFF;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
