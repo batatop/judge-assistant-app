@@ -4,7 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(/Users/efetiras/Documents/Github/judge-assistant-app/public/justice.png);
+    background-image: url(../assets/justice.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
