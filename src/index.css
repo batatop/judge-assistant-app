@@ -47,7 +47,9 @@ code {
   cursor: pointer;
   margin: var(--margin);
 }
-
+.appButton:hover {
+  background-color: var(--primary-color-hover);
+}
 .appInput {
   height: 30px;
   border: 1.5px solid var(--secondary-color);
@@ -55,4 +57,7 @@ code {
   border-radius: var(--border-radius);
   padding: 0 10px;
   margin: var(--margin);
+}
+.appInput:hover {
+  background-color: var(--secondary-color-hover);
 }

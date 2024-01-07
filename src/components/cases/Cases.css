@@ -3,6 +3,11 @@
   flex-direction: row;
   align-items: center;
 }
+.caseListItemContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .caseListItem {
   display: flex;
@@ -10,7 +15,9 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid grey;
+  max-width: 80%;
 }
+  
 
 .caseDeleteButton {
   display: flex;

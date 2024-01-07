@@ -12,12 +12,17 @@ class CaseFileItem extends Component {
 
     render() {
         return (
-            <div className='caseListItem'>
-                <div>{this.props.fileName}</div>
-                <div className='caseDeleteButton' onClick={this.deleteFileItem}>Delete</div>
+            <div className='caseListItemContainer'>
+                <div className='caseListItem'>
+                    <div>{this.props.fileName}</div>
+                    <div className='caseDeleteButton' onClick={this.deleteFileItem}>
+                        Delete
+                    </div>
+                </div>
             </div>
         );
     }
+
 }
 
 export default CaseFileItem;
