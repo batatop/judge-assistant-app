@@ -8,6 +8,7 @@ body {
 }
 
 :root {
+  /* colors */
   --primary-color: #6506FF;
   --primary-color-hover: #4D00E3;
   --primary-color-active: #3A00C8;
@@ -16,6 +17,15 @@ body {
   --secondary-color-active: #9C6EFF;
   --primary-text-color: #000000;
   --secondary-text-color: #FFFFFF;
+  /* other */
+  --border-radius: 5px;
+  --margin: 7px;
+}
+
+* {
+  box-sizing: border-box;
+  font-size: 14px;
+
 }
 
 code {
@@ -29,12 +39,20 @@ code {
   align-items: center;
   width: 100px;
   height: 30px;
-  border: 1px solid blue;
+  border: 1.5px solid var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  color: var(--secondary-text-color);
+  font-weight: bold;
   cursor: pointer;
+  margin: var(--margin);
 }
 
 .appInput {
   height: 30px;
-  border: 1px solid green;
+  border: 1.5px solid var(--secondary-color);
+  color: var(--primary-text-color);
+  border-radius: var(--border-radius);
   padding: 0 10px;
+  margin: var(--margin);
 }
