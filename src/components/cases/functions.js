@@ -1,4 +1,4 @@
-import { url } from "../../constants";
+import { messageTypes, url } from "../../constants";
 import { db, storage } from "../../firebase";
 import firebase from 'firebase/compat/app';
 
@@ -82,6 +82,7 @@ export function sendMessage(uid, caseId, message) {
         newMessageRef.set({
             message,
             timestamp: firebase.database.ServerValue.TIMESTAMP,
+            type: messageTypes.user
         }, (error) => {
             if (error) {
                 reject(error);

@@ -3,6 +3,8 @@ import { sendMessage, uploadCaseFile } from './functions';
 import { db } from '../../firebase';
 import { url } from '../../constants';
 import CaseFileItem from './CaseFileItem';
+import './Cases.css'
+import AppButton from '../general/AppButton';
 
 export default class Case extends Component {
   constructor(props) {
@@ -94,7 +96,7 @@ export default class Case extends Component {
         {/* upload button */}
         <div>
           <input type="file" onChange={this.handleFileChange} />
-          <button onClick={this.handleUpload}>Upload</button>
+          <AppButton value='Upload' onClick={this.handleUpload} />
         </div>
 
         {/* list cases */}

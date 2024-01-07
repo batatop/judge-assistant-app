@@ -4,6 +4,8 @@ import './Cases.css'
 import { db } from '../../firebase';
 import { url } from '../../constants';
 import CasesListItem from './CasesListItem';
+import AppInput from '../general/AppInput';
+import AppButton from '../general/AppButton';
 
 export default class Cases extends Component {
     constructor(props) {
@@ -46,8 +48,8 @@ export default class Cases extends Component {
         return (
             <div>
                 <div className='addCaseContainer'>
-                    <input type='text' value={this.state.newCaseName} onChange={(e) => this.setState({ newCaseName: e.target.value })} placeholder='New Case Name'/>
-                    <div className='appButton' onClick={this.addCase}>Add Case</div>
+                    <AppInput value={this.state.newCaseName} onChange={(e) => this.setState({ newCaseName: e.target.value })} placeholder='New Case Name'/>
+                    <AppButton value='Add Case' onClick={this.addCase} />
                 </div>
                 <div>
                     {this.getCasesList()}

@@ -21,3 +21,9 @@ code {
   border: 1px solid blue;
   cursor: pointer;
 }
+
+.appInput {
+  height: 30px;
+  border: 1px solid green;
+  padding: 0 10px;
+}
