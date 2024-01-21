@@ -9,6 +9,10 @@
   background-color: white;
 }
 
+.addCaseContainer>input {
+  flex: 1;
+}
+
 .casesContainer {
   display: flex;
   flex-direction: column;

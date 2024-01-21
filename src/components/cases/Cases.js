@@ -6,6 +6,7 @@ import { url } from '../../constants';
 import CasesListItem from './CasesListItem';
 import AppInput from '../general/AppInput';
 import AppButton from '../general/AppButton';
+import addIcon from '../assets/plus-circle.svg'
 
 export default class Cases extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ export default class Cases extends Component {
                 <div className='addCaseContainer'>
                     <div className="chatHeader">Add New Case</div>
                     <AppInput value={this.state.newCaseName} onChange={(e) => this.setState({ newCaseName: e.target.value })} placeholder='Case Name' />
-                    <AppButton value='Add Case' onClick={this.addCase} />
+                    <AppButton value='Add Case' onClick={this.addCase} icon={addIcon}/>
                 </div>
                 <div className="casesContainer">
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
