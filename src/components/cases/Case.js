@@ -98,10 +98,13 @@ export default class Case extends Component {
     return (
       <div className='caseContainer'>
         {/* upload button */}
-        <div className="fileUploadContainer">
-          <div className="fileUpload">Upload Case File</div>
-          <input type="file" onChange={this.handleFileChange} />
-          <AppButton value='Upload' onClick={this.handleUpload} />
+        <div className="chatOuterContainer">
+          <div className="chatContainer">
+            <div className="chatHeader">Upload</div>
+          </div>
+          <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center' }}>
+            <input type="file" onChange={this.handleFileChange} />
+            <AppButton value='Upload' onClick={this.handleUpload} /></div>
         </div>
         {/* list cases */}
         <div>
@@ -116,12 +119,28 @@ export default class Case extends Component {
           </div>
         </div>
 
+        {/* summary */}
+        <div className='chatOuterContainer'>
+          <div className="chatContainer"><div className="chatHeader">Summary</div></div>
+          <div className="chatInfoContainer">Summary content</div>
+        </div>
 
+        {/* disputed */}
+        <div className='chatOuterContainer'>
+          <div className="chatContainer"><div className="chatHeader">Disputed Facts</div></div>
+          <div className="chatInfoContainer">Disputed content</div>
+        </div>
+
+        {/* disputed */}
+        <div className='chatOuterContainer'>
+          <div className="chatContainer"><div className="chatHeader">Undisputed Facts</div></div>
+          <div className="chatInfoContainer">Undisputed content</div>
+        </div>
 
         {/* chat */}
         <div className='chatOuterContainer'>
           <div className="chatContainer"><div className="chatHeader">Chat</div></div>
-          <div className="chatInfoContainer"><div>{this.getChatMessages()}</div></div>
+          <div className="chatInfoContainer">{this.getChatMessages()}</div>
 
           <div className="sendContainer">
             <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />
