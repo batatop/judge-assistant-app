@@ -77,18 +77,22 @@ export function deleteFile(uid, caseId, fileId) {
 
 export function sendMessage(uid, caseId, message) {
     return new Promise((resolve, reject) => {
-        const caseDbRef = db.ref(`${url}/cases/${uid}/${caseId}/chat`);
-        const newMessageRef = caseDbRef.push();
-        newMessageRef.set({
-            message,
-            timestamp: firebase.database.ServerValue.TIMESTAMP,
-            type: messageTypes.user
-        }, (error) => {
-            if (error) {
-                reject(error);
-            } else {
-                resolve();
-            }
+        const config = {
+            uid,
+            caseId,
+            message
+        }
+
+        fetch(`/api/sendMessage`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(config)
+        }).then((response) => {
+            resolve(response);
+        }).catch((error) => {
+            reject(error);
         })
     })
 }
