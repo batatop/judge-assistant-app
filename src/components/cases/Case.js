@@ -72,9 +72,9 @@ export default class Case extends Component {
 
     return Object.keys(this.state.case.chat).map((messageId) => {
       const message = this.state.case.chat[messageId];
-      if (message.type !== userRoles.system && this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
+      if ( this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
         return (
-          <div key={messageId}>{this.state.case.chat[messageId].message}</div>
+          <div className={`chatMessage ${message.type}`} key={messageId}>{this.state.case.chat[messageId].message}</div>
         )
       }
 

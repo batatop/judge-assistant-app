@@ -46,18 +46,20 @@ export default class Cases extends Component {
 
     render() {
         return (
-            <div>
+            <div className='caseContainer'>
                 <div className='addCaseContainer'>
                     <div className="addNewCase">Add New Case</div>
                     <AppInput value={this.state.newCaseName} onChange={(e) => this.setState({ newCaseName: e.target.value })} placeholder='Case Name' />
                     <AppButton value='Add Case' onClick={this.addCase} />
                 </div>
                 <div className="casesContainer">
-                    <div className="casesHeader">My Cases</div>
-                    <div className="casesHeader">Date</div>
-                    <div className="casesHeader">Delete Case</div>
-                </div>
-                <div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <div className="casesHeader">My Cases</div>
+                        <div style={{ width: 200, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 4 }}>
+                            <div className="casesHeader">Date</div>
+                            <div className="casesHeader">Delete Case</div>
+                        </div>
+                    </div>
                     {this.getCasesList()}
                 </div>
             </div>
