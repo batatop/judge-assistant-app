@@ -12,7 +12,12 @@ export default class Case extends Component {
     this.state = {
       file: null,
       case: {},
-      chatMessage: ''
+      chatMessage: '',
+      isUploadDropdownOpen: false,
+      isSummaryDropdownOpen: false,
+      isDisputedDropdownOpen: false,
+      isUndisputedDropdownOpen: false,
+      isChatDropdownOpen: false
     }
   }
 
@@ -98,27 +103,39 @@ export default class Case extends Component {
     return (
       <div className='caseContainer'>
         {/* upload button */}
-        <div className="chatOuterContainer">
-          <div className="chatContainer">
-            <div className="chatHeader">Upload</div>
-          </div>
-          <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center' }}>
-            <input type="file" onChange={this.handleFileChange} />
-            <AppButton value='Upload' onClick={this.handleUpload} />
-          </div>
-          {/* list cases */}
-          <div>
-            <div className="casesContainer" >
-              <div className="casesHeader">Case Files</div>
-              <div className="casesHeader">Date</div>
-              <div className="casesHeader">Delete File</div>
+        {this.state.isUploadDropdownOpen ? (
+          <div className="chatOuterContainer" onClick={() => this.setState(prevState => ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Upload</div>
+              <div onClick={() => this.setState(prevState =>
+                ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}
+              >x</div>
+            </div>
+            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.isUploadDropdownOpen ? 'flex' : 'none' }}>
+              <input type="file" onChange={this.handleFileChange} />
+              <AppButton value='Upload' onClick={this.handleUpload} />
+              <div>
+                {/* list cases */}
+                <div className="casesContainer" >
+                  <div className="casesHeader">Case Files</div>
+                  <div className="casesHeader">Date</div>
+                  <div className="casesHeader">Delete File</div>
 
-            </div>
-            <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
-              {this.listCaseFiles()}
+                </div>
+                <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
+                  {this.listCaseFiles()}
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className="chatOuterContainer" style={{flex: 'initial'}} onClick={() => this.setState(prevState => ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Upload</div>
+              <div>+</div>
+            </div>
+          </div>
+        )}
 
         {/* summary */}
         <div className='chatOuterContainer'>
