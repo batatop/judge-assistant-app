@@ -35,6 +35,10 @@ code {
       'Oswald', sans-serif;
 }
 
+.button {
+  cursor: pointer;
+}
+
 .appButton {
   display: flex;
   justify-content: center;

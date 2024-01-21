@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { auth } from '../../firebase'; 
+import { auth } from '../../firebase';
 import { signOut } from 'firebase/auth';
 import './Navbar.css'
+import { routes } from '../../routes';
+import { useNavigate, useParams } from 'react-router-dom';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   logout = () => {
     signOut(auth).then(() => {
       console.info('User signed out');
@@ -12,14 +14,26 @@ export default class Navbar extends Component {
     });
   };
 
+  openCases = () => {
+    this.props.navigate(`${routes.cases}`);
+  }
+
   render() {
     return (
       <div className='navbarContainer'>
-        <div className='appAuthTitle'>JAI</div>
+        <div className='appAuthTitle button' onClick={this.openCases}>JAI</div>
         <div>
-          <div className='navbarButton' onClick={this.logout}><div className = "textStyle">Logout</div></div>
+          <div className='navbarButton' onClick={this.logout}><div className="textStyle">Logout</div></div>
         </div>
       </div>
     )
   }
 }
+
+function CasesListItemWithRouter(props) {
+  const navigate = useNavigate();
+  const params = useParams();
+
+  return <Navbar {...props} navigate={navigate} params={params} />;
+}
+export default CasesListItemWithRouter;

@@ -41,7 +41,7 @@ class App extends Component {
           width: '100vw',
           overflow: 'hidden'
         }}>
-          {this.state.uid && <Navbar />}
+          {this.state.uid && <Navbar navigate={this.props.navigate} />}
           <Routes>
             {this.state.uid ? (
               <>
