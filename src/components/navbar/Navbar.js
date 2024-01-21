@@ -5,6 +5,9 @@ import './Navbar.css'
 import { routes } from '../../routes';
 import { useNavigate, useParams } from 'react-router-dom';
 import Logo from '../general/Logo';
+import NavbarButton from './NavbarButton';
+import logoutIcon from '../assets/log-out.svg';
+import casesIcon from '../assets/book-open.svg';
 
 class Navbar extends Component {
   logout = () => {
@@ -25,8 +28,11 @@ class Navbar extends Component {
         <div className='button' onClick={this.openCases}>
           <Logo />
         </div>
-        <div>
-          <div className='navbarButton' onClick={this.logout}><div className="textStyle">Logout</div></div>
+        <div style={{ display: 'flex', flexShrink: 0, justifyContent: 'space-between' }}>
+          <NavbarButton text='Cases' onClick={this.openCases} icon={casesIcon} />
+          <div style={{ marginLeft: 14 }}>
+            <NavbarButton text='Logout' onClick={this.logout} icon={logoutIcon} />
+          </div>
         </div>
       </div>
     )
