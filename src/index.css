@@ -39,11 +39,10 @@ body {
 }
 
 .appButton {
+  height: 42px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 30px;
   border: 1.5px solid var(--secondary-color);
   background-color: var(--primary-color);
   border-radius: var(--border-radius);
@@ -51,20 +50,21 @@ body {
   font-weight: 500;
   cursor: pointer;
   margin: var(--margin);
+  padding: 7px 28px;
 }
 .appButton:hover {
   background-color: var(--primary-color-hover);
 }
 .appInput {
-  height: 30px;
+  height: 42px;
   border: 1.5px solid var(--secondary-color);
   color: var(--primary-text-color);
   border-radius: var(--border-radius);
   padding: 0 10px;
   margin: var(--margin);
-  flex: 1;
   transition: background-color 0.2s ease-in-out;
   outline: none;
+  padding: 7px 28px;
 }
 .appInput:hover {
   background-color: var(--primary-color-light);
@@ -91,5 +91,9 @@ body {
 
 .logo.dark {
   color: var(--primary-color);
-  margin-left: 2px;
+  margin-left: 1px;
+}
+
+.logo.big {
+  font-size: 4rem;
 }

@@ -18,9 +18,9 @@
     border: none;
     outline: none;
     cursor: pointer;
+    color: var(--primary-color);
+    font-weight: 500;
 }
  .textStyle {
-     color: var(--primary-color);
-     font-weight: 500;
-     margin-left: 4px;
+     margin-left: 7px;
  }

@@ -4,6 +4,7 @@ import AppInput from '../general/AppInput';
 import AppButton from '../general/AppButton';
 import './Auth.css';
 import Logo from '../general/Logo';
+import loginIcon from '../assets/log-in.svg';
 
 export default class Login extends Component {
   constructor(props) {
@@ -33,11 +34,11 @@ export default class Login extends Component {
       <div className='authContainer'>
         <div className='authInnerContainer'>
           <div className='appAuthTitle'>
-            <Logo size={'4em'}/>
+            <Logo big />
           </div>
           <AppInput value={this.state.email} onChange={this.handleChange} type="email" name="email" placeholder="Enter email" />
           <AppInput value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="Enter password" />
-          <AppButton value="Login" onClick={this.login} />
+          <AppButton value="Login" onClick={this.login} icon={loginIcon} />
         </div>
       </div>
     )

@@ -202,7 +202,7 @@ export default class Case extends Component {
 
           <div className="sendContainer">
             <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />
-            <div className="appButton" onClick={this.sendMessage}>Send</div>
+            <AppButton value='Send' onClick={this.sendMessage} />
           </div>
         </div>
       </div>
