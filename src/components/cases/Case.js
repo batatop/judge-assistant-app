@@ -91,40 +91,36 @@ export default class Case extends Component {
 
   render() {
     return (
-      <div>
+      <div className='caseContainer'>
         {/* upload button */}
         <div className="fileUploadContainer">
           <div className="fileUpload">Upload Case File</div>
           <input type="file" onChange={this.handleFileChange} />
-          <AppButton value='Upload' onClick={this.handleUpload} /><div>
-
-          </div></div>
-
-
+          <AppButton value='Upload' onClick={this.handleUpload} />
+        </div>
         {/* list cases */}
         <div>
           <div className="casesContainer" >
             <div className="casesHeader">Case Files</div>
             <div className="casesHeader">Date</div>
             <div className="casesHeader">Delete File</div>
-            
+
           </div>
           <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
-            {this.listCaseFiles()}</div>
-         
-
+            {this.listCaseFiles()}
+          </div>
         </div>
 
 
 
         {/* chat */}
-        <div>
+        <div className='chatOuterContainer'>
           <div className="chatContainer"><div className="chatHeader">Chat</div></div>
-          <div className = "chatInfoContainer"><div>{this.getChatMessages()}</div></div>
-          
-          <div className ="sendContainer">
+          <div className="chatInfoContainer"><div>{this.getChatMessages()}</div></div>
+
+          <div className="sendContainer">
             <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />
-            <div className = "appButton" onClick={this.sendMessage}>Send</div>
+            <div className="appButton" onClick={this.sendMessage}>Send</div>
           </div>
         </div>
       </div>

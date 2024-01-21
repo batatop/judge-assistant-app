@@ -34,7 +34,13 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          height: '100vh',
+          width: '100vw',
+          overflow: 'hidden'
+        }}>
           {this.state.uid && <Navbar />}
           <Routes>
             {this.state.uid ? (
