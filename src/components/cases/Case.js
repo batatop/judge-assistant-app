@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { sendMessage, uploadCaseFile } from './functions';
 import { db } from '../../firebase';
-import { url, userRoles } from '../../constants';
+import { url } from '../../constants';
 import CaseFileItem from './CaseFileItem';
 import './Cases.css'
 import AppButton from '../general/AppButton';
+import sendIcon from '../assets/send.svg'
 
 export default class Case extends Component {
   constructor(props) {
@@ -202,7 +203,7 @@ export default class Case extends Component {
 
           <div className="sendContainer">
             <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />
-            <AppButton value='Send' onClick={this.sendMessage} />
+            <AppButton value='Send' onClick={this.sendMessage} icon={sendIcon} />
           </div>
         </div>
       </div>
