@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Roboto:wght@400;500&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -25,14 +27,7 @@ body {
 * {
   box-sizing: border-box;
   font-size: 14px;
-
-}
-
-code {
-  font-family:
-      /*source-code-pro, Menlo, Monaco, Consolas, 'Courier New', 
-                    monospace;*/
-      'Oswald', sans-serif;
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .button {
@@ -49,10 +44,9 @@ code {
   background-color: var(--primary-color);
   border-radius: var(--border-radius);
   color: var(--secondary-text-color);
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   margin: var(--margin);
-  font-family: "Oswald", sans-serif;
 }
 .appButton:hover {
   background-color: var(--primary-color-hover);
@@ -69,15 +63,26 @@ code {
   background-color: var(--secondary-color-hover);
 }
 .addNewCase {
-  font-family: 'Oswald',
-    sans-serif;
   color: var(--primary-color);
 }
 
-
-
 .fileUpload {
-  font-family: 'Oswald',
-    sans-serif;
   color: var(--primary-color);
+}
+
+.logoContainer {
+  position: relative;
+  padding: 3px;
+}
+
+.logo {
+  font-family: 'Oswald', sans-serif !important;
+  color: #130036;
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.logo.dark {
+  color: var(--primary-color);
+  margin-left: 2px;
 }

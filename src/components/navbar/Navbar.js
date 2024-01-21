@@ -4,6 +4,7 @@ import { signOut } from 'firebase/auth';
 import './Navbar.css'
 import { routes } from '../../routes';
 import { useNavigate, useParams } from 'react-router-dom';
+import Logo from '../general/Logo';
 
 class Navbar extends Component {
   logout = () => {
@@ -21,7 +22,9 @@ class Navbar extends Component {
   render() {
     return (
       <div className='navbarContainer'>
-        <div className='appAuthTitle button' onClick={this.openCases}>JAI</div>
+        <div className='button' onClick={this.openCases}>
+          <Logo />
+        </div>
         <div>
           <div className='navbarButton' onClick={this.logout}><div className="textStyle">Logout</div></div>
         </div>

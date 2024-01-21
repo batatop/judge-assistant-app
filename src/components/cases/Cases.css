@@ -37,7 +37,6 @@
   border: 1px solid grey;
   min-width: 700px;
   border: 1px solid var(--primary-color);
-  font-family: "Oswald", sans-serif;
   padding: 7px;
   color: var(--secondary-color);
 
@@ -66,8 +65,6 @@
 }
 
 .casesHeader {
-  font-family: 'Oswald',
-    sans-serif;
   color: var(--primary-color);
 }
 
@@ -100,8 +97,6 @@
 
 .chatHeader {
   display: flex;
-  font-family: 'Oswald',
-    sans-serif;
   color: var(--primary-color);
   justify-content: center;
   font-size: 14px;
@@ -117,7 +112,6 @@
   margin: 0 auto;
   width: 700px;
   padding: 7px;
-  font-family: "Oswald", sans-serif;
   overflow: auto;
 }
 
@@ -141,6 +135,13 @@
   border: 2px solid var(--primary-color);
   margin: 0 auto;
   width: 700px;
-  font-family: "Oswald", sans-serif;
   padding: 7px;
+}
+
+.chatMessage {
+  border: 2px solid var(--primary-color);
+  height: min-content;
+  padding: 7px;
+  box-sizing: border-box;
+  border-radius: 5px;
 }

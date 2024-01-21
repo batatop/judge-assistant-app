@@ -21,9 +21,5 @@
 }
 
 .appAuthTitle {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-color);
     margin-bottom: 10px;
-    font-family: 'Oswald', sans-serif;
 }
