@@ -1,10 +1,8 @@
-import { messageTypes, url } from "../../constants";
 import { db, storage } from "../../firebase";
-import firebase from 'firebase/compat/app';
 
 export function addCase(uid, name) {
     return new Promise((resolve, reject) => {
-        const casesRef = db.ref(`${url}/cases/${uid}`);
+        const casesRef = db.ref(`/cases/${uid}`);
         const newCaseRef = casesRef.push();
         newCaseRef.set({
             name,
@@ -21,7 +19,7 @@ export function addCase(uid, name) {
 
 export function deleteCase(uid, caseId) {
     return new Promise((resolve, reject) => {
-        const caseRef = db.ref(`${url}/cases/${uid}/${caseId}`);
+        const caseRef = db.ref(`/cases/${uid}/${caseId}`);
         caseRef.remove((error) => {
             if (error) {
                 reject(error);
@@ -34,7 +32,7 @@ export function deleteCase(uid, caseId) {
 
 export function uploadCaseFile(uid, caseId, file) {
     return new Promise((resolve, reject) => {
-        const caseDbRef = db.ref(`${url}/cases/${uid}/${caseId}/files`);
+        const caseDbRef = db.ref(`/cases/${uid}/${caseId}/files`);
         const newFileRef = caseDbRef.push();
         newFileRef.set({
             name: file.name,
@@ -58,7 +56,7 @@ export function uploadCaseFile(uid, caseId, file) {
 
 export function deleteFile(uid, caseId, fileId) {
     return new Promise((resolve, reject) => {
-        const caseDbRef = db.ref(`${url}/cases/${uid}/${caseId}/files/${fileId}`);
+        const caseDbRef = db.ref(`/cases/${uid}/${caseId}/files/${fileId}`);
         caseDbRef.remove((error) => {
             if (error) {
                 reject(error);
