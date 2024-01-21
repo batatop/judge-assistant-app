@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { deleteCase } from './functions';
 import { routes } from '../../routes';
+import xIcon from '../assets/x-circle.svg';
 
 class CasesListItem extends Component {
     deleteCaseItem = () => {
@@ -16,7 +17,18 @@ class CasesListItem extends Component {
         return (
             <div className = "caseListItemContainer"><div className='caseListItem' onClick={this.openCase}>
                 <div>{this.props.caseName}</div>
-                <div className='caseDeleteButton' onClick={this.deleteCaseItem}>X</div>
+                <div style={{
+                        width:200,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding:4
+                }}>
+                    <div className='casesHeader'>Hi</div>
+                    <div className='caseDeleteButton casesHeader' onClick={this.deleteCaseItem}>
+                        <img src={xIcon} alt='delete' />
+                    </div>
+                </div>
             </div></div>
             
         );

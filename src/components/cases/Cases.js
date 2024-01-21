@@ -55,7 +55,7 @@ export default class Cases extends Component {
                 </div>
                 <div className="casesContainer">
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                        <div className="casesHeader">My Cases</div>
+                        <div className="casesHeader" style={{justifyContent: 'initial'}}>My Cases</div>
                         <div style={{ width: 200, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: 4 }}>
                             <div className="casesHeader">Date</div>
                             <div className="casesHeader">Delete Case</div>
