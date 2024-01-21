@@ -45,7 +45,23 @@ export function uploadCaseFile(uid, caseId, file) {
                 const caseRef = storageRef.child(`${uid}/${caseId}/${newFileRef.key}`);
                 caseRef.put(file).then((snapshot) => {
                     // update firebase database
-                    resolve(snapshot);
+                    const config = {
+                        uid,
+                        caseId,
+                        fileId: newFileRef.key,
+                    }
+                    console.log(config);
+                    fetch(`/api/addCaseFile`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(config)
+                    }).then((response) => {
+                        resolve(response);
+                    }).catch((error) => {
+                        reject(error);
+                    })
                 }).catch((error) => {
                     reject(error);
                 })

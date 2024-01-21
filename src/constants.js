@@ -1,5 +1,5 @@
 export const url = ''
-export const messageTypes = {
+export const userRoles = {
     user: 'user',
     agent: 'agent'
 }
