@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { sendMessage, uploadCaseFile } from './functions';
 import { db } from '../../firebase';
-import { url } from '../../constants';
+import { url, userRoles } from '../../constants';
 import CaseFileItem from './CaseFileItem';
 import './Cases.css'
 import AppButton from '../general/AppButton';
@@ -68,9 +68,14 @@ export default class Case extends Component {
     }
 
     return Object.keys(this.state.case.chat).map((messageId) => {
-      return (
-        <div key={messageId}>{this.state.case.chat[messageId].message}</div>
-      )
+      const message = this.state.case.chat[messageId];
+      if (message.type !== userRoles.system && this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
+        return (
+          <div key={messageId}>{this.state.case.chat[messageId].message}</div>
+        )
+      }
+
+      return null
     })
   }
 
