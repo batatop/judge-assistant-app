@@ -3,7 +3,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid var(--primary-color);
   margin: 0 auto;
   width: 700px;
   padding: 7px;
@@ -13,8 +12,7 @@
 .casesContainer {
   display: flex;
   flex-direction: column;
-  border: 2px solid var(--primary-color);
-  border-bottom: 0;
+  border-top: 2px solid var(--primary-color);
   margin: 0 auto;
   width: 700px;
   padding: 7px;
@@ -37,6 +35,8 @@
   border: 1px solid grey;
   min-width: 700px;
   border: 1px solid var(--primary-color);
+  border-left: 0;
+  border-right: 0;
   padding: 7px;
   color: var(--secondary-color);
 
@@ -76,6 +76,9 @@
   width: 700px;
   margin: auto;
   background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 2px solid var(--primary-color);
 }
 
 .chatOuterContainer {
@@ -91,8 +94,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid var(--primary-color);
-  border-bottom: 0;
+  border-bottom: 2px solid var(--primary-color);
   margin: 0 auto;
   width: 700px;
   padding: 5px 7px;
@@ -110,7 +112,6 @@
   flex: 1;
   display: flex;
   justify-content: space-between;
-  border: 2px solid var(--primary-color);
   border-bottom: 0;
   margin: 0 auto;
   width: 700px;
@@ -123,7 +124,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  border: 2px solid var(--primary-color);
+  border-top: 2px solid var(--primary-color);
   margin: 0 auto;
   width: 700px;
 
