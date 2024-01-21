@@ -107,9 +107,7 @@ export default class Case extends Component {
           <div className="chatOuterContainer" onClick={() => this.setState(prevState => ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}>
             <div className="chatContainer">
               <div className="chatHeader">Upload</div>
-              <div onClick={() => this.setState(prevState =>
-                ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}
-              >x</div>
+              <div>x</div>
             </div>
             <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.isUploadDropdownOpen ? 'flex' : 'none' }}>
               <input type="file" onChange={this.handleFileChange} />
@@ -129,7 +127,7 @@ export default class Case extends Component {
             </div>
           </div>
         ) : (
-          <div className="chatOuterContainer" style={{flex: 'initial'}} onClick={() => this.setState(prevState => ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}>
+          <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState(prevState => ({ isUploadDropdownOpen: !prevState.isUploadDropdownOpen }))}>
             <div className="chatContainer">
               <div className="chatHeader">Upload</div>
               <div>+</div>
@@ -137,23 +135,67 @@ export default class Case extends Component {
           </div>
         )}
 
-        {/* summary */}
-        <div className='chatOuterContainer'>
-          <div className="chatContainer"><div className="chatHeader">Summary</div></div>
-          <div className="chatInfoContainer">Summary content</div>
-        </div>
+        {this.state.isSummaryDropdownOpen ? (
+          <div className="chatOuterContainer" onClick={() => this.setState(prevState => ({ isSummaryDropdownOpen: !prevState.isSummaryDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Summary</div>
+              <div>x</div>
+            </div>
+
+            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.isSummaryDropdownOpen ? 'flex' : 'none' }}>
+              Summary content
+            </div>
+          </div>
+        ) : (
+          <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState(prevState => ({ isSummaryDropdownOpen: !prevState.isSummaryDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Summary</div>
+              <div>+</div>
+            </div>
+          </div>
+        )}
 
         {/* disputed */}
-        <div className='chatOuterContainer'>
-          <div className="chatContainer"><div className="chatHeader">Disputed Facts</div></div>
-          <div className="chatInfoContainer">Disputed content</div>
-        </div>
+        {this.state.isDisputedDropdownOpen ? (
+          <div className="chatOuterContainer" onClick={() => this.setState(prevState => ({ isDisputedDropdownOpen: !prevState.isDisputedDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Disputed Facts</div>
+              <div>x</div>
+            </div>
 
-        {/* disputed */}
-        <div className='chatOuterContainer'>
-          <div className="chatContainer"><div className="chatHeader">Undisputed Facts</div></div>
-          <div className="chatInfoContainer">Undisputed content</div>
-        </div>
+            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.isDisputedDropdownOpen ? 'flex' : 'none' }}>
+              Disputed content
+            </div>
+          </div>
+        ) : (
+          <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState(prevState => ({ isDisputedDropdownOpen: !prevState.isDisputedDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Disputed</div>
+              <div>+</div>
+            </div>
+          </div>
+        )}
+
+        {/* undisputed */}
+        {this.state.isUndisputedDropdownOpen ? (
+          <div className="chatOuterContainer" onClick={() => this.setState(prevState => ({ isUndisputedDropdownOpen: !prevState.isUndisputedDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Unisputed Facts</div>
+              <div>x</div>
+            </div>
+
+            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.isUndisputedDropdownOpen ? 'flex' : 'none' }}>
+              Unisputed content
+            </div>
+          </div>
+        ) : (
+          <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState(prevState => ({ isUndisputedDropdownOpen: !prevState.isUndisputedDropdownOpen }))}>
+            <div className="chatContainer">
+              <div className="chatHeader">Unisputed</div>
+              <div>+</div>
+            </div>
+          </div>
+        )}
 
         {/* chat */}
         <div className='chatOuterContainer'>
