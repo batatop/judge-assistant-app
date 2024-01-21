@@ -16,11 +16,9 @@
     align-items: center;
     justify-content: space-between;
     border: 2px solid var(--primary-color);
-  
-  
+    border-bottom: 0;
     margin: 0 auto;
     width: 700px;
-  
     padding: 7px;
 }
 .caseListItemContainer {
@@ -92,12 +90,10 @@
   align-items: center;
   justify-content: center;
   border: 2px solid var(--primary-color);
-
-
+  border-bottom: 0;
   margin: 0 auto;
   width: 700px;
-
-  padding: 7px;
+  padding: 5px;
 }
 
 .chatHeader {
@@ -106,6 +102,7 @@
     sans-serif;
   color: var(--primary-color);
   justify-content: center;
+  font-size: 14px;
 }
 
 .chatInfoContainer {
@@ -114,6 +111,7 @@
   display: flex;
   justify-content: space-between;
   border: 2px solid var(--primary-color);
+  border-bottom: 0;
   margin: 0 auto;
   width: 700px;
   padding: 7px;
