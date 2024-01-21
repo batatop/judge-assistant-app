@@ -61,6 +61,7 @@ body {
   border-radius: var(--border-radius);
   padding: 0 10px;
   margin: var(--margin);
+  flex: 1;
 }
 .appInput:hover {
   background-color: var(--secondary-color-hover);

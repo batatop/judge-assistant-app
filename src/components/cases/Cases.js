@@ -48,7 +48,7 @@ export default class Cases extends Component {
         return (
             <div className='caseContainer'>
                 <div className='addCaseContainer'>
-                    <div className="addNewCase">Add New Case</div>
+                    <div className="chatHeader">Add New Case</div>
                     <AppInput value={this.state.newCaseName} onChange={(e) => this.setState({ newCaseName: e.target.value })} placeholder='Case Name' />
                     <AppButton value='Add Case' onClick={this.addCase} />
                 </div>
