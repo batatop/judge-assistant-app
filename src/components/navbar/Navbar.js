@@ -6,7 +6,7 @@ import './Navbar.css'
 export default class Navbar extends Component {
   logout = () => {
     signOut(auth).then(() => {
-      console.log('User signed out');
+      console.info('User signed out');
     }).catch((error) => {
       console.error('Error signing out: ', error);
     });

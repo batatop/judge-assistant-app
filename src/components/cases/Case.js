@@ -23,7 +23,7 @@ export default class Case extends Component {
       const data = snapshot.val() || {};
       this.setState({ case: data });
     }, (error) => {
-      console.log(error)
+      console.error(error)
     })
   }
 
@@ -38,10 +38,10 @@ export default class Case extends Component {
       const { uid } = this.props;
       const caseId = getCaseId();
       uploadCaseFile(uid, caseId, this.state.file).then(() => {
-        console.log('file uploaded')
+        console.info('file uploaded')
         this.setState({ file: null });
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       })
     }
   }
@@ -75,17 +75,16 @@ export default class Case extends Component {
   }
 
   handleChatMessageChange = (e) => {
-    console.log(e.target.value);
     this.setState({ chatMessage: e.target.value });
   }
 
   sendMessage = () => {
     if (this.state.chatMessage) {
       sendMessage(this.props.uid, getCaseId(), this.state.chatMessage).then(() => {
-        console.log('message sent');
+        console.info('message sent');
         this.setState({ chatMessage: '' });
       }).catch((error) => {
-        console.log(error);
+        console.error(error);
       })
     }
   }

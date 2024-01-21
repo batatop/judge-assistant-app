@@ -4,9 +4,9 @@ import './Cases.css'
 class CaseFileItem extends Component {
     deleteFileItem = () => {
         deleteFile(this.props.uid, this.props.caseId, this.props.fileId).then(() => {
-            console.log('file deleted')
+            console.info('file deleted')
         }).catch((error) => {
-            console.log(error);
+            console.error(error);
         })
     }
 

@@ -22,7 +22,7 @@ export default class Cases extends Component {
             const data = snapshot.val() || {};
             this.setState({ cases: data, newCaseName: '' });
         }, (error) => {
-            console.log(error)
+            console.error(error)
         })
     }
 
