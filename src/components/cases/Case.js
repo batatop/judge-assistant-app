@@ -104,18 +104,19 @@ export default class Case extends Component {
           </div>
           <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center' }}>
             <input type="file" onChange={this.handleFileChange} />
-            <AppButton value='Upload' onClick={this.handleUpload} /></div>
-        </div>
-        {/* list cases */}
-        <div>
-          <div className="casesContainer" >
-            <div className="casesHeader">Case Files</div>
-            <div className="casesHeader">Date</div>
-            <div className="casesHeader">Delete File</div>
-
+            <AppButton value='Upload' onClick={this.handleUpload} />
           </div>
-          <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
-            {this.listCaseFiles()}
+          {/* list cases */}
+          <div>
+            <div className="casesContainer" >
+              <div className="casesHeader">Case Files</div>
+              <div className="casesHeader">Date</div>
+              <div className="casesHeader">Delete File</div>
+
+            </div>
+            <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
+              {this.listCaseFiles()}
+            </div>
           </div>
         </div>
 
