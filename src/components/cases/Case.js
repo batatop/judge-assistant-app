@@ -119,7 +119,6 @@ export default class Case extends Component {
             return part.replace(/(\r\n|\n|\r)/gm, "").trim()
           })
           // number each item and join with new line
-          console.log(factTextParts)
           return factTextParts.map((part, index) => {
             return <div className='bulletContainer'><div className='bulletNumber'>{index + 1}</div>{part}</div>
           })
