@@ -43,7 +43,12 @@
   border-right: 0;
   padding: 7px;
   color: var(--secondary-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
 
+.caseListItem:hover {
+  background-color: var(--primary-color-light);
 }
 
 
