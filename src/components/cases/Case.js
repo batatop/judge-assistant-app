@@ -147,17 +147,17 @@ export default class Case extends Component {
       <div className='caseContainer'>
         {/* upload button */}
         {this.state.openDropdown === 'upload' ? (
-          <div className="chatOuterContainer" onClick={() => this.setState({ openDropdown: false })}>
-            <div className="chatContainer">
+          <div className="chatOuterContainer">
+            <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Upload</div>
               <div>x</div>
             </div>
-            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'initial' : 'none' }}>
               <input type="file" onChange={this.handleFileChange} />
               <AppButton value='Upload' onClick={this.handleUpload} />
               <div>
                 {/* list cases */}
-                <div className="casesContainer" >
+                <div className="casesContainer" style={{display: 'flex', flexDirection: 'row'}}>
                   <div className="casesHeader">Case Files</div>
                   <div className="casesHeader">Date</div>
                   <div className="casesHeader">Delete File</div>
@@ -179,8 +179,8 @@ export default class Case extends Component {
         )}
 
         {this.state.openDropdown === 'summary' ? (
-          <div className="chatOuterContainer" onClick={() => this.setState({ openDropdown: false })}>
-            <div className="chatContainer">
+          <div className="chatOuterContainer">
+            <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Summary</div>
               <div>x</div>
             </div>
@@ -200,8 +200,8 @@ export default class Case extends Component {
 
         {/* disputed */}
         {this.state.openDropdown === 'disputed' ? (
-          <div className="chatOuterContainer" onClick={() => this.setState({ openDropdown: false })}>
-            <div className="chatContainer">
+          <div className="chatOuterContainer">
+            <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Disputed Facts</div>
               <div>x</div>
             </div>
@@ -221,8 +221,8 @@ export default class Case extends Component {
 
         {/* undisputed */}
         {this.state.openDropdown === 'undisputed' ? (
-          <div className="chatOuterContainer" onClick={() => this.setState({ openDropdown: false })}>
-            <div className="chatContainer">
+          <div className="chatOuterContainer">
+            <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Unisputed Facts</div>
               <div>x</div>
             </div>
@@ -241,9 +241,9 @@ export default class Case extends Component {
         )}
 
         {/* chat */}
-        <div className='chatOuterContainer'>
+        <div className='chatOuterContainer chat'>
           <div className="chatContainer"><div className="chatHeader">Chat</div></div>
-          <div className="chatInfoContainer">{this.getChatMessages()}</div>
+          <div className="chatInfoContainer chat">{this.getChatMessages()}</div>
 
           <div className="sendContainer">
             <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />

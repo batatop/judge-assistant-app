@@ -101,8 +101,13 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  flex: 1;
   overflow: hidden;
+  max-height: 400px;
+}
+
+.chatOuterContainer.chat {
+  max-height: initial;
+  flex: 1;
 }
 
 .chatContainer {
@@ -135,11 +140,14 @@
   display: flex;
   justify-content: space-between;
   border-bottom: 0;
-  margin: 0 auto;
-  width: 700px;
   padding: 7px 35px;
   overflow: auto;
   white-space: pre-line;
+}
+
+.chatInfoContainer.chat {
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .sendContainer {
@@ -161,7 +169,6 @@
   justify-content: space-between;
   border: 2px solid var(--primary-color);
   margin: 0 auto;
-  width: 700px;
   padding: 7px;
 }
 
