@@ -164,7 +164,6 @@ export default class Case extends Component {
                 {/* list cases */}
                 <div className="casesContainer" style={{ display: 'flex', flexDirection: 'row', width: 'initial' }}>
                   <div className="casesHeader">Case Files</div>
-                  <div className="casesHeader">Date</div>
                   <div className="casesHeader">Delete File</div>
 
                 </div>
