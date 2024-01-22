@@ -159,6 +159,10 @@
   overflow: auto;
 }
 
+.chatInfoContainer.upload {
+  padding: 7px 0;
+}
+
 .sendContainer {
   display: flex;
   flex-direction: row;
@@ -172,6 +176,7 @@
 }
 
 .caseInfoContainer {
+  position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;

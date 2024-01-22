@@ -157,18 +157,18 @@ export default class Case extends Component {
               <div className="chatHeader">Upload</div>
               <div>x</div>
             </div>
-            <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'initial' : 'none' }}>
+            <div className="chatInfoContainer upload" style={{ flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'initial' : 'none' }}>
               <input type="file" onChange={this.handleFileChange} />
               <AppButton value='Upload' onClick={this.handleUpload} icon={uploadIcon} />
               <div>
                 {/* list cases */}
-                <div className="casesContainer" style={{ display: 'flex', flexDirection: 'row' }}>
+                <div className="casesContainer" style={{ display: 'flex', flexDirection: 'row', width: 'initial' }}>
                   <div className="casesHeader">Case Files</div>
                   <div className="casesHeader">Date</div>
                   <div className="casesHeader">Delete File</div>
 
                 </div>
-                <div className="caseInfoContainer" style={{ flexDirection: 'column' }}>
+                <div style={{ flexDirection: 'column' }}>
                   {this.listCaseFiles()}
                 </div>
               </div>
