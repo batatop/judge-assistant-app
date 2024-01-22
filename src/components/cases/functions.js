@@ -1,3 +1,4 @@
+import firebase from 'firebase/compat/app';
 import { db, storage } from "../../firebase";
 
 export function addCase(uid, name) {
@@ -6,7 +7,8 @@ export function addCase(uid, name) {
         const newCaseRef = casesRef.push();
         newCaseRef.set({
             name,
-            caseId: newCaseRef.key
+            caseId: newCaseRef.key,
+            timestamp: firebase.database.ServerValue.TIMESTAMP
         }, (error) => {
             if (error) {
                 reject(error);

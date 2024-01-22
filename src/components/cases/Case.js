@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { sendMessage, uploadCaseFile } from './functions';
 import { db } from '../../firebase';
-import { url } from '../../constants';
+import { url, userRoles } from '../../constants';
 import CaseFileItem from './CaseFileItem';
 import './Cases.css'
 import AppButton from '../general/AppButton';
@@ -73,7 +73,7 @@ export default class Case extends Component {
 
     return Object.keys(this.state.case.chat).map((messageId) => {
       const message = this.state.case.chat[messageId];
-      if ( this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
+      if (message.type !== userRoles.system && this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
         return (
           <div className={`chatMessage ${message.type}`} key={messageId}>{this.state.case.chat[messageId].message}</div>
         )
@@ -81,6 +81,44 @@ export default class Case extends Component {
 
       return null
     })
+  }
+
+  getFacts(type) {
+    let factText = ''
+    if (!this.state.case?.chat || (this.state.case?.chat && Object.keys(this.state.case.chat).length === 0)) {
+      return null
+    }
+
+    console.log(this.state.case?.chat)
+
+    if (type === 'summary') {
+      Object.keys(this.state.case.chat).forEach((messageId) => {
+        const message = this.state.case.chat[messageId];
+        if (message.type === userRoles.system && message?.message) {
+          factText = message.message.startsWith('SUMMARY')
+        }
+      })
+    }
+    else if (type === 'disputed') {
+      Object.keys(this.state.case.chat).forEach((messageId) => {
+        const message = this.state.case.chat[messageId];
+        if (message.type === userRoles.system && message?.message) {
+          factText = message.message.substring(message.message.startsWith('DISPUTED'), message.message.startsWith('UNDISPUTED'))
+        }
+      })
+    }
+    else if (type === 'undisputed') {
+      Object.keys(this.state.case.chat).forEach((messageId) => {
+        const message = this.state.case.chat[messageId];
+        if (message.type === userRoles.system && message?.message) {
+          factText = message.message.substring(message.message.startsWith('UNDISPUTED'))
+        }
+      })
+    }
+
+    console.log({type, factText})
+
+    return factText
   }
 
   handleChatMessageChange = (e) => {
@@ -99,6 +137,7 @@ export default class Case extends Component {
   }
 
   render() {
+    console.log(this.getFacts('summary'))
     return (
       <div className='caseContainer'>
         {/* upload button */}
@@ -142,7 +181,7 @@ export default class Case extends Component {
             </div>
 
             <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'summary' ? 'flex' : 'none' }}>
-              Summary content
+              {this.getFacts('summary')}
             </div>
           </div>
         ) : (
@@ -163,7 +202,7 @@ export default class Case extends Component {
             </div>
 
             <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'disputed' ? 'flex' : 'none' }}>
-              Disputed content
+              {this.getFacts('disputed')}
             </div>
           </div>
         ) : (
@@ -183,8 +222,8 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'undisputed'  ? 'flex' : 'none' }}>
-              Unisputed content
+            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'undisputed' ? 'flex' : 'none' }}>
+              {this.getFacts('undisputed')}
             </div>
           </div>
         ) : (

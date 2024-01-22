@@ -19,7 +19,6 @@
     outline: none;
     cursor: pointer;
     color: var(--primary-color);
-    font-weight: 500;
 }
  .textStyle {
      margin-left: 7px;
