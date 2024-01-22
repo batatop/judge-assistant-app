@@ -217,3 +217,14 @@
 .chatMessageContainer.user {
   justify-content: flex-end;
 }
+
+.caseDropdown {
+  width: 24px;
+  height: 24px;
+  padding: 4px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.caseDropdown.close {
+  transform: rotate(45deg);
+}

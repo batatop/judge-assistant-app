@@ -10,6 +10,7 @@ import uploadIcon from '../assets/upload.svg'
 import ChatMessage from './ChatMessage';
 import moment from 'moment';
 import AppInput from '../general/AppInput';
+import dropdownIcon from '../assets/x.svg';
 
 export default class Case extends Component {
   constructor(props) {
@@ -155,7 +156,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer">
             <div className="chatContainer upload" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Upload</div>
-              <div>x</div>
+              <div>
+                <img className='caseDropdown' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
             <div className="chatInfoContainer upload" style={{ flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'initial' : 'none' }}>
               <input type="file" onChange={this.handleFileChange} />
@@ -177,7 +180,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState({ openDropdown: 'upload' })}>
             <div className="chatContainer upload">
               <div className="chatHeader">Upload</div>
-              <div>+</div>
+              <div>
+                <img className='caseDropdown close' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
           </div>
         )}
@@ -186,7 +191,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer">
             <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Summary</div>
-              <div>x</div>
+              <div>
+                <img className='caseDropdown' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
 
             <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'summary' ? 'flex' : 'none' }}>
@@ -197,7 +204,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState({ openDropdown: 'summary' })}>
             <div className="chatContainer">
               <div className="chatHeader">Summary</div>
-              <div>+</div>
+              <div>
+                <img className='caseDropdown close' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
           </div>
         )}
@@ -207,7 +216,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer">
             <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Disputed Facts</div>
-              <div>x</div>
+              <div>
+                <img className='caseDropdown' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
 
             <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'disputed' ? 'flex' : 'none' }}>
@@ -218,7 +229,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState({ openDropdown: 'disputed' })}>
             <div className="chatContainer">
               <div className="chatHeader">Disputed Facts</div>
-              <div>+</div>
+              <div>
+                <img className='caseDropdown close' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
           </div>
         )}
@@ -228,7 +241,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer">
             <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Unisputed Facts</div>
-              <div>x</div>
+              <div>
+                <img className='caseDropdown' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
 
             <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'undisputed' ? 'flex' : 'none' }}>
@@ -239,7 +254,9 @@ export default class Case extends Component {
           <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState({ openDropdown: 'undisputed' })}>
             <div className="chatContainer">
               <div className="chatHeader">Unisputed Facts</div>
-              <div>+</div>
+              <div>
+                <img className='caseDropdown close' src={dropdownIcon} alt='dropdown' />
+              </div>
             </div>
           </div>
         )}
