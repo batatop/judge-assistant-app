@@ -9,6 +9,7 @@ import sendIcon from '../assets/send.svg'
 import uploadIcon from '../assets/upload.svg'
 import ChatMessage from './ChatMessage';
 import moment from 'moment';
+import AppInput from '../general/AppInput';
 
 export default class Case extends Component {
   constructor(props) {
@@ -250,7 +251,8 @@ export default class Case extends Component {
           <div className="chatInfoContainer chat">{this.getChatMessages()}</div>
 
           <div className="sendContainer">
-            <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} />
+            {/* <input type="text" className="appInput" placeholder="Type Message..." onChange={this.handleChatMessageChange} value={this.state.chatMessage} style={{ width: '100%' }} /> */}
+            <AppInput value={this.state.chatMessage} onChange={this.handleChatMessageChange} placeholder='Type Message...' large onEnter={this.sendMessage} />
             <AppButton value='Send' onClick={this.sendMessage} icon={sendIcon} />
           </div>
         </div>

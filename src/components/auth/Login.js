@@ -36,8 +36,8 @@ export default class Login extends Component {
           <div className='appAuthTitle'>
             <Logo big />
           </div>
-          <AppInput value={this.state.email} onChange={this.handleChange} type="email" name="email" placeholder="Enter email" />
-          <AppInput value={this.state.password} onChange={this.handleChange} type="password" name="password" placeholder="Enter password" />
+          <AppInput value={this.state.email} onChange={this.handleChange} onEnter={this.login} type="email" name="email" placeholder="Enter email" />
+          <AppInput value={this.state.password} onChange={this.handleChange} onEnter={this.login} type="password" name="password" placeholder="Enter password" />
           <AppButton value="Login" onClick={this.login} icon={loginIcon} />
         </div>
       </div>
