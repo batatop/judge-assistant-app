@@ -78,10 +78,10 @@ export default class Case extends Component {
     return Object.keys(this.state.case.chat).map((messageId) => {
       const message = this.state.case.chat[messageId];
       if (message.type !== userRoles.system && this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
-          const date = (this.state.case?.chat?.[messageId]?.timestamp && moment(this.state.case?.chat?.[messageId]?.timestamp).format('HH:mm')) || '';
-          const sender = this.state.case?.chat?.[messageId]?.type === userRoles.user ? 'You' : 'Agent';
-          return (
-          <ChatMessage key={messageId} type={message.type} text={this.state.case.chat[messageId].message} date={date} sender={sender}/>
+        const date = (this.state.case?.chat?.[messageId]?.timestamp && moment(this.state.case?.chat?.[messageId]?.timestamp).format('HH:mm')) || '';
+        const sender = this.state.case?.chat?.[messageId]?.type === userRoles.user ? 'You' : 'Agent';
+        return (
+          <ChatMessage key={messageId} type={message.type} text={this.state.case.chat[messageId].message} date={date} sender={sender} />
         )
       }
 
@@ -95,7 +95,7 @@ export default class Case extends Component {
       return null
     }
 
-    Object.keys(this.state.case.chat).map((messageId) => {
+    return Object.keys(this.state.case.chat).map((messageId) => {
       const message = this.state.case.chat[messageId];
       let startIndex = message.message.indexOf('SUMMARY')
       let endIndex = message.message.indexOf('DISPUTED')
@@ -118,18 +118,18 @@ export default class Case extends Component {
             return part.replace(/(\r\n|\n|\r)/gm, "").trim()
           })
           // number each item and join with new line
-          factText = factTextParts.map((part, index) => {
-            return `${index + 1}. ${part}`
-          }).join('\n')
+          console.log(factTextParts)
+          return factTextParts.map((part, index) => {
+            return <div className='bulletContainer'><div className='bulletNumber'>{index + 1}</div>{part}</div>
+          })
         }
         else {
           factText = factText.replace(/(\r\n|\n|\r)/gm, "").trim()
           factText = factText.substring(7, factText.length)
+          return <div>{factText}</div>
         }
       }
     })
-
-    return factText
   }
 
   handleChatMessageChange = (e) => {
@@ -153,7 +153,7 @@ export default class Case extends Component {
         {/* upload button */}
         {this.state.openDropdown === 'upload' ? (
           <div className="chatOuterContainer">
-            <div className="chatContainer" onClick={() => this.setState({ openDropdown: false })}>
+            <div className="chatContainer upload" onClick={() => this.setState({ openDropdown: false })}>
               <div className="chatHeader">Upload</div>
               <div>x</div>
             </div>
@@ -176,7 +176,7 @@ export default class Case extends Component {
           </div>
         ) : (
           <div className="chatOuterContainer" style={{ flex: 'initial' }} onClick={() => this.setState({ openDropdown: 'upload' })}>
-            <div className="chatContainer">
+            <div className="chatContainer upload">
               <div className="chatHeader">Upload</div>
               <div>+</div>
             </div>
@@ -190,7 +190,7 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'summary' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'summary' ? 'flex' : 'none' }}>
               {this.getFacts('summary')}
             </div>
           </div>
@@ -211,7 +211,7 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'disputed' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'disputed' ? 'flex' : 'none' }}>
               {this.getFacts('disputed')}
             </div>
           </div>
@@ -232,7 +232,7 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'undisputed' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'undisputed' ? 'flex' : 'none' }}>
               {this.getFacts('undisputed')}
             </div>
           </div>
@@ -247,7 +247,7 @@ export default class Case extends Component {
 
         {/* chat */}
         <div className='chatOuterContainer chat'>
-          <div className="chatContainer"><div className="chatHeader">Chat</div></div>
+          <div className="chatContainer chat"><div className="chatHeader">Chat</div></div>
           <div className="chatInfoContainer chat">{this.getChatMessages()}</div>
 
           <div className="sendContainer">
