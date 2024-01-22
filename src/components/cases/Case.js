@@ -89,34 +89,40 @@ export default class Case extends Component {
       return null
     }
 
-    console.log(this.state.case?.chat)
-
-    if (type === 'summary') {
-      Object.keys(this.state.case.chat).forEach((messageId) => {
-        const message = this.state.case.chat[messageId];
-        if (message.type === userRoles.system && message?.message) {
-          factText = message.message.startsWith('SUMMARY')
+    Object.keys(this.state.case.chat).map((messageId) => {
+      const message = this.state.case.chat[messageId];
+      let startIndex = message.message.indexOf('SUMMARY')
+      let endIndex = message.message.indexOf('DISPUTED')
+      if(type === 'disputed') {
+         startIndex = message.message.indexOf('DISPUTED')
+         endIndex = message.message.indexOf('UNDISPUTED')
+      }
+      else if(type === 'undisputed') {
+          startIndex = message.message.indexOf('UNDISPUTED')
+          endIndex = message.message.length
+      }
+      if (endIndex > 0) {
+        factText = message.message.substring(startIndex, endIndex)
+        if(type !== 'summary') {
+          let factTextParts = factText.split('-')
+          // remove first part
+          factTextParts.shift()
+          // remove new lines and first/end spaces
+          factTextParts = factTextParts.map((part) => {
+            return part.replace(/(\r\n|\n|\r)/gm, "").trim()
+          })
+          // number each item and join with new line
+          factText = factTextParts.map((part, index) => {
+            return `${index+1}. ${part}`
+          }).join('\n')
+          console.log(factText)
         }
-      })
-    }
-    else if (type === 'disputed') {
-      Object.keys(this.state.case.chat).forEach((messageId) => {
-        const message = this.state.case.chat[messageId];
-        if (message.type === userRoles.system && message?.message) {
-          factText = message.message.substring(message.message.startsWith('DISPUTED'), message.message.startsWith('UNDISPUTED'))
+        else {
+          factText = factText.replace(/(\r\n|\n|\r)/gm, "").trim()
+          factText = factText.substring(7, factText.length)
         }
-      })
-    }
-    else if (type === 'undisputed') {
-      Object.keys(this.state.case.chat).forEach((messageId) => {
-        const message = this.state.case.chat[messageId];
-        if (message.type === userRoles.system && message?.message) {
-          factText = message.message.substring(message.message.startsWith('UNDISPUTED'))
-        }
-      })
-    }
-
-    console.log({type, factText})
+      }
+    })
 
     return factText
   }
@@ -137,7 +143,6 @@ export default class Case extends Component {
   }
 
   render() {
-    console.log(this.getFacts('summary'))
     return (
       <div className='caseContainer'>
         {/* upload button */}
@@ -147,7 +152,7 @@ export default class Case extends Component {
               <div className="chatHeader">Upload</div>
               <div>x</div>
             </div>
-            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'flex' : 'none' }}>
               <input type="file" onChange={this.handleFileChange} />
               <AppButton value='Upload' onClick={this.handleUpload} />
               <div>
@@ -180,7 +185,7 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'summary' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'summary' ? 'flex' : 'none' }}>
               {this.getFacts('summary')}
             </div>
           </div>
@@ -201,7 +206,7 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'disputed' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'disputed' ? 'flex' : 'none' }}>
               {this.getFacts('disputed')}
             </div>
           </div>
@@ -222,7 +227,7 @@ export default class Case extends Component {
               <div>x</div>
             </div>
 
-            <div className="chatInfoContainer" style={{ alignItems: 'center', justifyContent: 'center', flexDirection: 'column', display: this.state.openDropdown === 'undisputed' ? 'flex' : 'none' }}>
+            <div className="chatInfoContainer" style={{ alignItems: 'center', flexDirection: 'column', display: this.state.openDropdown === 'undisputed' ? 'flex' : 'none' }}>
               {this.getFacts('undisputed')}
             </div>
           </div>
