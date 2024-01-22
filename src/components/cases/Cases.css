@@ -179,4 +179,27 @@
   box-sizing: border-box;
   border-radius: 5px;
   max-width: 70%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.chatMessage.agent {
+  background-color: var(--primary-color);
+  color: white;
+  border: 2px solid var(--primary-color-active);
+}
+
+.chatMessageContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 100%;
+  padding: 7px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chatMessageContainer.user {
+  justify-content: flex-end;
 }

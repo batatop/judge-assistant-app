@@ -6,6 +6,8 @@ import CaseFileItem from './CaseFileItem';
 import './Cases.css'
 import AppButton from '../general/AppButton';
 import sendIcon from '../assets/send.svg'
+import ChatMessage from './ChatMessage';
+import moment from 'moment';
 
 export default class Case extends Component {
   constructor(props) {
@@ -74,8 +76,10 @@ export default class Case extends Component {
     return Object.keys(this.state.case.chat).map((messageId) => {
       const message = this.state.case.chat[messageId];
       if (message.type !== userRoles.system && this.state.case?.chat?.[messageId]?.message && !this.state.case.chat[messageId].message.startsWith('SUMMARY')) {
-        return (
-          <div className={`chatMessage ${message.type}`} key={messageId}>{this.state.case.chat[messageId].message}</div>
+          const date = (this.state.case?.chat?.[messageId]?.timestamp && moment(this.state.case?.chat?.[messageId]?.timestamp).format('HH:mm')) || '';
+          const sender = this.state.case?.chat?.[messageId]?.type === userRoles.user ? 'You' : 'Agent';
+          return (
+          <ChatMessage key={messageId} type={message.type} text={this.state.case.chat[messageId].message} date={date} sender={sender}/>
         )
       }
 
@@ -93,17 +97,17 @@ export default class Case extends Component {
       const message = this.state.case.chat[messageId];
       let startIndex = message.message.indexOf('SUMMARY')
       let endIndex = message.message.indexOf('DISPUTED')
-      if(type === 'disputed') {
-         startIndex = message.message.indexOf('DISPUTED')
-         endIndex = message.message.indexOf('UNDISPUTED')
+      if (type === 'disputed') {
+        startIndex = message.message.indexOf('DISPUTED')
+        endIndex = message.message.indexOf('UNDISPUTED')
       }
-      else if(type === 'undisputed') {
-          startIndex = message.message.indexOf('UNDISPUTED')
-          endIndex = message.message.length
+      else if (type === 'undisputed') {
+        startIndex = message.message.indexOf('UNDISPUTED')
+        endIndex = message.message.length
       }
       if (endIndex > 0) {
         factText = message.message.substring(startIndex, endIndex)
-        if(type !== 'summary') {
+        if (type !== 'summary') {
           let factTextParts = factText.split('-')
           // remove first part
           factTextParts.shift()
@@ -113,7 +117,7 @@ export default class Case extends Component {
           })
           // number each item and join with new line
           factText = factTextParts.map((part, index) => {
-            return `${index+1}. ${part}`
+            return `${index + 1}. ${part}`
           }).join('\n')
           console.log(factText)
         }
@@ -157,7 +161,7 @@ export default class Case extends Component {
               <AppButton value='Upload' onClick={this.handleUpload} />
               <div>
                 {/* list cases */}
-                <div className="casesContainer" style={{display: 'flex', flexDirection: 'row'}}>
+                <div className="casesContainer" style={{ display: 'flex', flexDirection: 'row' }}>
                   <div className="casesHeader">Case Files</div>
                   <div className="casesHeader">Date</div>
                   <div className="casesHeader">Delete File</div>
