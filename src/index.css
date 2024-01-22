@@ -52,7 +52,9 @@ body {
   cursor: pointer;
   margin: var(--margin);
   padding: 7px 28px;
+  transition: background-color 0.1s ease-in-out;
 }
+
 .appButton:hover {
   background-color: var(--primary-color-hover);
 }
