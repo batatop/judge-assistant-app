@@ -24,7 +24,7 @@ class CasesListItem extends Component {
                         justifyContent: "space-between",
                         padding:4
                 }}>
-                    <div className='casesHeader'>Hi</div>
+                    <div className='casesHeader'>{this.props.caseDate}</div>
                     <div className='caseDeleteButton casesHeader' onClick={this.deleteCaseItem}>
                         <img src={xIcon} alt='delete' />
                     </div>
