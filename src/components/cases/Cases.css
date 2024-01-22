@@ -76,6 +76,10 @@
   color: var(--primary-color);
 }
 
+.casesHeader.content {
+  color: var(--primary-text-color);
+}
+
 .caseContainer {
   flex: 1;
   display: flex;
