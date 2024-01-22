@@ -52,7 +52,6 @@ export function uploadCaseFile(uid, caseId, file) {
                         caseId,
                         fileId: newFileRef.key,
                     }
-                    console.log(config);
                     fetch(`/api/addCaseFile`, {
                         method: 'POST',
                         headers: {

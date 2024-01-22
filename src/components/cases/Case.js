@@ -6,6 +6,7 @@ import CaseFileItem from './CaseFileItem';
 import './Cases.css'
 import AppButton from '../general/AppButton';
 import sendIcon from '../assets/send.svg'
+import uploadIcon from '../assets/upload.svg'
 import ChatMessage from './ChatMessage';
 import moment from 'moment';
 
@@ -84,7 +85,7 @@ export default class Case extends Component {
       }
 
       return null
-    })
+    }).reverse()
   }
 
   getFacts(type) {
@@ -103,7 +104,7 @@ export default class Case extends Component {
       }
       else if (type === 'undisputed') {
         startIndex = message.message.indexOf('UNDISPUTED')
-        endIndex = message.message.length
+        endIndex = startIndex > 0 ? message.message.length : -1
       }
       if (endIndex > 0) {
         factText = message.message.substring(startIndex, endIndex)
@@ -119,7 +120,6 @@ export default class Case extends Component {
           factText = factTextParts.map((part, index) => {
             return `${index + 1}. ${part}`
           }).join('\n')
-          console.log(factText)
         }
         else {
           factText = factText.replace(/(\r\n|\n|\r)/gm, "").trim()
@@ -158,7 +158,7 @@ export default class Case extends Component {
             </div>
             <div className="chatInfoContainer" style={{ flexDirection: 'column', display: this.state.openDropdown === 'upload' ? 'initial' : 'none' }}>
               <input type="file" onChange={this.handleFileChange} />
-              <AppButton value='Upload' onClick={this.handleUpload} />
+              <AppButton value='Upload' onClick={this.handleUpload} icon={uploadIcon} />
               <div>
                 {/* list cases */}
                 <div className="casesContainer" style={{ display: 'flex', flexDirection: 'row' }}>

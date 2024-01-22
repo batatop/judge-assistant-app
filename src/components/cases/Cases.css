@@ -146,8 +146,9 @@
 }
 
 .chatInfoContainer.chat {
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: column-reverse;
+  justify-content: initial;
+  overflow: auto;
 }
 
 .sendContainer {
