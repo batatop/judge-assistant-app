@@ -42,6 +42,7 @@ img {
 
 .button {
   cursor: pointer;
+  user-select: none;
 }
 
 .appButton {
@@ -57,6 +58,7 @@ img {
   margin: var(--margin);
   padding: 7px 28px;
   transition: background-color 0.1s ease-in-out;
+  user-select: none;
 }
 
 .appButton:hover {
