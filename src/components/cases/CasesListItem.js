@@ -5,7 +5,9 @@ import { routes } from '../../routes';
 import xIcon from '../assets/x-circle.svg';
 
 class CasesListItem extends Component {
-    deleteCaseItem = () => {
+    deleteCaseItem = (e) => {
+        e.stopPropagation();
+        e.preventDefault();
         deleteCase(this.props.uid, this.props.caseId);
     }
 
