@@ -11,7 +11,7 @@ export default function AppInput(props) {
       placeholder={props.placeholder}
       onKeyDown={(e) => {
         if (e.keyCode === 13) {
-          props.onEnter();
+          props.onEnter(e);
         }
       }}
     />
